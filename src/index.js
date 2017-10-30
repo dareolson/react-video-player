@@ -16,7 +16,11 @@ const API_KEY = 'AIzaSyBXmIKC6o-cfMgocfCDeZQ-fLo07WzSgHw';
 			selectedVideo: null
 			};
 
-			YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
+		this.videoSearch('surfboards');
+	}
+
+	videoSearch(term) {
+		YTSearch({key: API_KEY, term: term}, (videos) => {
 			this.setState({
 			videos: videos,
 			selectedVideo: videos [0]
@@ -27,9 +31,11 @@ const API_KEY = 'AIzaSyBXmIKC6o-cfMgocfCDeZQ-fLo07WzSgHw';
 		render() {
 		return (
 		<div> 
-			<SearchBar />
+			<SearchBar onSearchTermChange = {term => this.videoSearch(term)} />
 			<VideoDetail video = {this.state.selectedVideo} />
-			<VideoList videos = {this.state.videos}/>
+			<VideoList
+			onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
+			videos = {this.state.videos}/>
 		</div>
 		)
 	}
