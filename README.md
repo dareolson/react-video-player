@@ -1,3 +1,3 @@
 # react-video-player
 
-A Youtube syle video player made with React.js, Node.js, Express and MySQL.
+A Youtube-API powered video player made with React and Node. 
